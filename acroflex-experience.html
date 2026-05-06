@@ -41,12 +41,14 @@
 
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
     body {
       font-family: var(--font);
       background: var(--dark);
       color: var(--white);
       overflow-x: hidden;
+      max-width: 100%;
       line-height: 1.6;
     }
     img { max-width: 100%; display: block; }
@@ -231,6 +233,7 @@
     .hero-badge {
       display: inline-flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 8px;
       background: rgba(255,107,0,.12);
       border: 1px solid rgba(255,107,0,.3);
@@ -242,6 +245,8 @@
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 24px;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .hero-badge::before { content: '🎉'; }
 
@@ -1338,9 +1343,14 @@
       .hero { padding-top: 72px; min-height: 100svh; }
       .hero-inner { gap: 32px; }
       .hero-title { font-size: clamp(38px, 11vw, 56px); }
-      .hero-subtitle { font-size: 15px; }
+      .hero-subtitle { font-size: 15px; max-width: 100%; }
+      .hero-badge { font-size: 11px; letter-spacing: 1px; }
       .event-card { padding: 22px 18px; }
       .event-detail-value { font-size: 15px; }
+
+      /* Navbar móvil */
+      .navbar-logo img { height: 52px; }
+      .navbar-cta { padding: 9px 16px; font-size: 12px; }
 
       /* Vibes strip: scroll horizontal en mobile */
       .vibes-strip {

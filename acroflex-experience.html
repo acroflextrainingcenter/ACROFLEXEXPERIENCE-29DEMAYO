@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>ACROFLEX EXPERIENCE — Viernes 29 de mayo</title>
   <meta name="description" content="Acrobacia, estiramiento, buena música, marcas aliadas y nuevos acrocompañeros. Multinivel. Viernes 29 de mayo · 7:00 p.m. · Acroflex, Jesús María, Lima." />
 
@@ -159,6 +159,7 @@
       top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 16px 0;
+      padding-top: max(16px, env(safe-area-inset-top));
       transition: background .3s, box-shadow .3s;
     }
     .navbar.scrolled {

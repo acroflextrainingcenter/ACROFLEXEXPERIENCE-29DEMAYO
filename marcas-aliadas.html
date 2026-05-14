@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcas Aliadas — Acroflex Experience</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:    #0A2E6E;
+      --azul2:   #0D3DA8;
+      --naranja: #FF6B00;
+      --blanco:  #FFFFFF;
+      --gris:    #F4F6FA;
+      --texto:   #1A1A2E;
+    }
+
+    body { font-family: 'Open Sans', sans-serif; color: var(--texto); background: var(--blanco); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+    /* ── HERO SPLIT ──────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #05173E 0%, #0A2E6E 50%, #0D3DA8 100%);
+      color: var(--blanco);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(255,107,0,0.15) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-text {
+      padding: 64px 48px 64px 5vw;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text .logo {
+      height: 90px;
+      margin-bottom: 32px;
+    }
+    .hero-text .badge {
+      display: inline-block;
+      background: var(--naranja);
+      color: var(--blanco);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+    .hero-text h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .hero-text h1 span { color: var(--naranja); }
+    .hero-text p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      margin-bottom: 36px;
+      max-width: 420px;
+      line-height: 1.65;
+    }
+    .btn-hero {
+      display: inline-block;
+      background: var(--naranja);
+      color: var(--blanco);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 15px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(255,107,0,0.45);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,107,0,0.55); }
+    .hero-datos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 32px;
+      font-size: 0.88rem;
+      opacity: 0.75;
+    }
+
+    /* hero: collage derecho */
+    .hero-fotos {
+      height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      padding: 8px 8px 8px 0;
+      position: relative;
+    }
+    .hero-fotos .hf {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-fotos .hf img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-fotos .hf::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(5,23,62,0.35) 100%);
+    }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-text { padding: 48px 20px 36px; text-align: center; }
+      .hero-text p { margin-left: auto; margin-right: auto; max-width: 100%; }
+      .hero-datos { justify-content: center; }
+      .hero-fotos { height: 280px; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr; padding: 0 8px 8px; }
+      .btn-hero { display: block; text-align: center; width: 100%; }
+    }
+
+    /* ── PHOTO STRIP ─────────────────────────────────────── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 320px;
+      gap: 6px;
+    }
+    .photo-strip .ps {
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-strip .ps img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .photo-strip .ps:hover img { transform: scale(1.06); }
+    @media (max-width: 600px) {
+      .photo-strip {
+        grid-template-columns: repeat(2, 1fr);
+        height: auto;
+      }
+      .photo-strip .ps { height: 190px; }
+    }
+
+    /* ── SECCIONES GENERALES ─────────────────────────────── */
+    section { padding: 72px 24px; }
+    @media (max-width: 480px) { section { padding: 48px 20px; } }
+    .container { max-width: 880px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--naranja);
+      margin-bottom: 10px;
+    }
+    h2.title {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: var(--azul);
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+    h2.title span { color: var(--naranja); }
+    .subtitle { font-size: 1.05rem; color: #4a5568; max-width: 640px; }
+
+    /* ── EVENTO: split texto + foto ─────────────────────── */
+    .evento-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 36px;
+    }
+    @media (max-width: 680px) {
+      .evento-split { grid-template-columns: 1fr; gap: 28px; }
+      .evento-foto { order: -1; aspect-ratio: 16/9; }
+    }
+    .evento-foto {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: 0 16px 48px rgba(10,46,110,0.22);
+    }
+    .evento-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .evento-texto { display: flex; flex-direction: column; gap: 20px; }
+    .evento-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gris);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--azul);
+      width: fit-content;
+    }
+
+    /* ── AUDIENCIA ───────────────────────────────────────── */
+    .audiencia { background: var(--gris); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+    @media (min-width: 600px) {
+      .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .stat-card {
+      background: var(--blanco);
+      border-radius: 18px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(10,46,110,0.08);
+    }
+    .stat-card .num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--azul2);
+      line-height: 1;
+    }
+    .stat-card .num em { color: var(--naranja); font-size: 1.7rem; font-style: normal; }
+    .stat-card p { font-size: 0.83rem; color: #5a6480; margin-top: 7px; font-weight: 600; }
+
+    /* fila de 3 fotos en audiencia */
+    .foto-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .foto-row .fr {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      box-shadow: 0 4px 16px rgba(10,46,110,0.12);
+    }
+    .foto-row .fr img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s; }
+    .foto-row .fr:hover img { transform: scale(1.05); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .tag {
+      background: var(--blanco);
+      border: 2px solid #dde3f0;
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--azul);
+    }
+
+    /* ── PARTICIPACIÓN: foto banner + cards ─────────────── */
+    .part-banner {
+      position: relative;
+      height: 380px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 36px 0 28px;
+      background: #05173E;
+    }
+    .part-banner img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .part-banner::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(5,23,62,0.88) 0%, rgba(10,46,110,0.65) 55%, rgba(13,61,168,0.25) 100%);
+    }
+    .part-banner-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 28px;
+      z-index: 1;
+      color: var(--blanco);
+    }
+    .part-banner-text h3 {
+      font-size: clamp(1.3rem, 5vw, 2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .part-banner-text h3 span { color: var(--naranja); }
+    .part-banner-text p { font-size: 0.9rem; opacity: 0.85; max-width: 420px; }
+    @media (max-width: 480px) {
+      .part-banner { height: 260px; }
+      .part-banner-text { padding: 0 20px; }
+    }
+
+    .participacion-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 560px) {
+      .participacion-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 860px) {
+      .participacion-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .part-card {
+      border: 2px solid #dde3f0;
+      border-radius: 16px;
+      padding: 26px 22px;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .part-card:hover { border-color: var(--naranja); box-shadow: 0 6px 24px rgba(255,107,0,0.13); transform: translateY(-2px); }
+    .part-card .icon { font-size: 1.9rem; margin-bottom: 12px; }
+    .part-card h3 { font-size: 0.98rem; font-weight: 700; color: var(--azul); margin-bottom: 6px; }
+    .part-card p { font-size: 0.86rem; color: #5a6480; }
+
+    /* ── QUÉ GANAS: split texto + foto ──────────────────── */
+    .ganas {
+      background: linear-gradient(135deg, #05173E 0%, #0A2E6E 55%, #0D3DA8 100%);
+      color: var(--blanco);
+    }
+    .ganas-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    @media (max-width: 700px) { .ganas-split { grid-template-columns: 1fr; } }
+    .ganas h2.title { color: var(--blanco); }
+    .ganas .subtitle { color: rgba(255,255,255,0.72); }
+    .ganas-items { display: flex; flex-direction: column; gap: 20px; margin-top: 28px; }
+    .gana-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .gana-item .icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.08);
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gana-item h3 { font-size: 0.95rem; font-weight: 700; color: var(--blanco); margin-bottom: 4px; }
+    .gana-item p { font-size: 0.85rem; color: rgba(255,255,255,0.68); }
+
+    .ganas-foto-col {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      height: 520px;
+    }
+    .ganas-foto-col .gf {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .ganas-foto-col .gf img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 700px) {
+      .ganas-foto-col { height: 220px; grid-template-rows: 1fr; grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── DETALLES ────────────────────────────────────────── */
+    .detalles { background: var(--gris); }
+    .detalles-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 36px;
+    }
+    @media (max-width: 700px) {
+      .detalles-inner { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .detalles-box {
+      background: var(--blanco);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(10,46,110,0.10);
+      overflow: hidden;
+    }
+    .detalles-row {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      gap: 14px;
+      border-bottom: 1px solid #f0f2f8;
+    }
+    .detalles-row:last-child { border-bottom: none; }
+    .detalles-row .di { font-size: 1.2rem; flex-shrink: 0; width: 28px; text-align: center; }
+    .detalles-row .label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #8a93b0; margin-bottom: 2px; }
+    .detalles-row .val { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--azul); word-break: break-word; }
+    .detalles-row .val.hl { color: var(--naranja); }
+
+    .detalles-foto {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .detalles-foto .df {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .detalles-foto .df img { width: 100%; display: block; object-fit: cover; height: 220px; }
+    @media (max-width: 700px) {
+      .detalles-foto { flex-direction: row; }
+      .detalles-foto .df { flex: 1; }
+      .detalles-foto .df img { height: 160px; }
+    }
+    .alerta {
+      background: #fff4e8;
+      border-left: 5px solid var(--naranja);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+    .alerta .ai { font-size: 1.3rem; flex-shrink: 0; }
+    .alerta p { font-size: 0.9rem; color: #7a4000; }
+    .alerta strong { color: var(--naranja); }
+
+    /* ── CTA FINAL ───────────────────────────────────────── */
+    .cta-final {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+    .cta-bg {
+      position: relative;
+      height: 480px;
+    }
+    .cta-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cta-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(255,107,0,0.75) 0%, rgba(180,50,0,0.9) 100%);
+    }
+    .cta-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      z-index: 1;
+      color: var(--blanco);
+    }
+    .cta-content h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .cta-content p { font-size: 1rem; opacity: 0.9; margin-bottom: 32px; max-width: 480px; }
+    .btn-cta {
+      display: inline-block;
+      background: var(--blanco);
+      color: var(--naranja);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 16px 42px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+      transition: transform .15s;
+    }
+    .btn-cta:hover { transform: translateY(-2px); }
+    .cta-nota { margin-top: 18px; font-size: 0.85rem; opacity: 0.82; }
+    @media (max-width: 480px) {
+      .cta-bg { height: 420px; }
+      .btn-cta { display: block; width: 100%; max-width: 320px; text-align: center; }
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--azul);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.82rem;
+    }
+    footer strong { color: var(--blanco); }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO SPLIT ═════════════════════════════════════════ -->
+<section class="hero">
+
+  <div class="hero-text">
+    <img src="logo-acroflex.png" alt="Acroflex Training Center" class="logo" />
+    <div class="badge">Convocatoria abierta · Marcas aliadas</div>
+    <h1>Lleva tu marca<br/>frente a una<br/><span>comunidad activa</span></h1>
+    <p>Únete al Acroflex Experience como marca aliada. Genera exposición real con personas que se mueven, entrenan y cuidan su bienestar.</p>
+    <a href="https://wa.me/51923235248?text=Hola%20Nicole!%20Quiero%20m%C3%A1s%20info%20para%20ser%20marca%20aliada%20del%20Acroflex%20Experience%20%F0%9F%A7%A1"
+       target="_blank" class="btn-hero">
+      Quiero ser marca aliada →
+    </a>
+    <div class="hero-datos">
+      <span>📅 29 de mayo, 2025</span>
+      <span>🕖 7:00 – 9:30 p.m.</span>
+      <span>📍 Jesús María, Lima</span>
+    </div>
+  </div>
+
+  <div class="hero-fotos">
+    <div class="hf">
+      <img src="ma-chica-posando.png" alt="Acroflex comunidad" />
+    </div>
+    <div class="hf">
+      <img src="ma-chico-posando.png" alt="Acroflex acrobacias" />
+    </div>
+  </div>
+
+</section>
+
+<!-- ══ PHOTO STRIP ════════════════════════════════════════ -->
+<div class="photo-strip">
+  <div class="ps"><img src="ma-grupo-estiramiento.png" alt="" style="object-position: center" /></div>
+  <div class="ps"><img src="ma-cartwheel-rosa.png" alt="" style="object-position: center" /></div>
+  <div class="ps"><img src="ma-grupo-handstands.png" alt="" style="object-position: top" /></div>
+  <div class="ps"><img src="ma-grupo-puente.png" alt="" style="object-position: center" /></div>
+</div>
+
+<!-- ══ QUÉ ES EL EVENTO ═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">El evento</div>
+    <h2 class="title">¿Qué es el<br/><span>Acroflex Experience?</span></h2>
+    <div class="evento-split">
+      <div class="evento-texto">
+        <p class="subtitle">
+          Es nuestro primer evento especial en el nuevo salón de Acroflex: una noche de acrobacias, estiramiento guiado, buena música, comunidad y sorpresas.
+        </p>
+        <p class="subtitle">
+          Multinivel — desde quienes entrenan por primera vez hasta deportistas avanzados. Las marcas aliadas no son un stand en un rincón — son parte activa de la experiencia.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+          <div class="evento-chip">🎶 Buena música y ambiente</div>
+          <div class="evento-chip">🤸 Acrobacias y estiramiento guiado</div>
+          <div class="evento-chip">🎁 Sorteos y marcas sorpresa</div>
+          <div class="evento-chip">📸 Fotos y videos de la noche</div>
+        </div>
+      </div>
+      <div class="evento-foto">
+        <img src="ma-handstand-doble.png" alt="Clase Acroflex" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AUDIENCIA ══════════════════════════════════════════ -->
+<section class="audiencia">
+  <div class="container">
+    <div class="section-label">Tu audiencia ese día</div>
+    <h2 class="title">Personas que<br/><span>se mueven y consumen</span></h2>
+    <p class="subtitle">Asistentes comprometidos con el deporte, el bienestar y el movimiento. Exactamente el perfil que busca tu marca.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="num">~30<em>+</em></div>
+        <p>Asistentes al evento</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">2.5<em>h</em></div>
+        <p>Horas de interacción</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">8</div>
+        <p>Cupos para marcas</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">S/<em style="font-size:1.4rem">0</em></div>
+        <p>Costo de participación</p>
+      </div>
+    </div>
+
+    <div class="foto-row">
+      <div class="fr"><img src="ma-chica-posando.png" alt="Acroflex adultos" /></div>
+      <div class="fr"><img src="ma-chico-posando.png" alt="Acroflex grupo" /></div>
+      <div class="fr"><img src="ma-grupo-estiramiento.png" alt="Acroflex movimiento" /></div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">🏃 Deporte y movimiento</span>
+      <span class="tag">🥗 Salud y bienestar</span>
+      <span class="tag">💪 Vida activa</span>
+      <span class="tag">🎯 Jóvenes y adultos</span>
+      <span class="tag">✨ Comunidad comprometida</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CÓMO PARTICIPAS ════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-label">Formas de participar</div>
+    <h2 class="title">Tú decides<br/><span>cómo conectar</span></h2>
+
+    <div class="part-banner">
+      <img src="ma-cartwheel-rosa.png" alt="Acroflex entreno" />
+      <div class="part-banner-text">
+        <h3>Sin complicaciones.<br/><span>Sin letra chica.</span></h3>
+        <p>Elige la dinámica que mejor se adapte a tu marca y nosotros te integramos al evento.</p>
+      </div>
+    </div>
+
+    <div class="participacion-grid">
+      <div class="part-card">
+        <div class="icon">🎁</div>
+        <h3>Sorteo o regalo sorpresa</h3>
+        <p>Dona un producto o pack y hazlo parte del momento de sorteos. Máxima visibilidad y emoción.</p>
+      </div>
+      <div class="part-card">
+        <div class="icon">🧪</div>
+        <h3>Muestra o degustación</h3>
+        <p>Lleva muestras para que los asistentes prueben en vivo. Nada convence más que la experiencia directa.</p>
+      </div>
+      <div class="part-card">
+        <div class="icon">⚡</div>
+        <h3>Activación de marca</h3>
+        <p>Crea una dinámica corta y divertida que haga sentir tu marca. Un reto, una foto, una experiencia.</p>
+      </div>
+      <div class="part-card">
+        <div class="icon">🏷️</div>
+        <h3>Descuento exclusivo</h3>
+        <p>Ofrece un beneficio especial solo para asistentes del evento. Genera ventas y fidelización reales.</p>
+      </div>
+      <div class="part-card">
+        <div class="icon">💡</div>
+        <h3>¿Tienes otra idea?</h3>
+        <p>Si tienes una propuesta distinta, conversamos. Queremos que tenga sentido para tu marca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUÉ GANAS ══════════════════════════════════════════ -->
+<section class="ganas">
+  <div class="container">
+    <div class="ganas-split">
+
+      <div>
+        <div class="section-label" style="color:rgba(255,153,51,0.9)">Lo que obtienes</div>
+        <h2 class="title">Exposición real,<br/>no solo presencia</h2>
+        <p class="subtitle">Ser parte del Acroflex Experience significa que tu marca aparece donde está la comunidad.</p>
+
+        <div class="ganas-items">
+          <div class="gana-item">
+            <div class="icon">📱</div>
+            <div>
+              <h3>Mención en redes sociales</h3>
+              <p>Tu marca aparece en la comunicación oficial del evento en Instagram de Acroflex.</p>
+            </div>
+          </div>
+          <div class="gana-item">
+            <div class="icon">🎬</div>
+            <div>
+              <h3>Presencia en el contenido del evento</h3>
+              <p>Fotos y videos del evento incluirán tu marca en acción dentro del espacio.</p>
+            </div>
+          </div>
+          <div class="gana-item">
+            <div class="icon">🤝</div>
+            <div>
+              <h3>Contacto directo con tu público</h3>
+              <p>2.5 horas cara a cara con personas que eligieron invertir en su bienestar.</p>
+            </div>
+          </div>
+          <div class="gana-item">
+            <div class="icon">🌱</div>
+            <div>
+              <h3>Prioridad en próximos eventos</h3>
+              <p>Las marcas aliadas fundadoras tienen lugar preferencial en los siguientes eventos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ganas-foto-col">
+        <div class="gf">
+          <img src="ma-handstand-solo.png" alt="Acroflex comunidad" style="object-position: top" />
+        </div>
+        <div class="gf">
+          <img src="ma-grupo-clase.png" alt="Acroflex clase" style="object-position: center" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DETALLES ═══════════════════════════════════════════ -->
+<section class="detalles">
+  <div class="container">
+    <div class="section-label">Todo lo que necesitas saber</div>
+    <h2 class="title">Detalles del<br/><span>acuerdo</span></h2>
+
+    <div class="detalles-inner">
+      <div class="detalles-box">
+        <div class="detalles-row">
+          <div class="di">📅</div>
+          <div>
+            <div class="label">Fecha del evento</div>
+            <div class="val">Viernes 29 de mayo, 2025</div>
+          </div>
+        </div>
+        <div class="detalles-row">
+          <div class="di">🕖</div>
+          <div>
+            <div class="label">Horario</div>
+            <div class="val">7:00 p.m. – 9:30 p.m. (2 h 30 min)</div>
+          </div>
+        </div>
+        <div class="detalles-row">
+          <div class="di">📍</div>
+          <div>
+            <div class="label">Ubicación</div>
+            <div class="val">Av. Húsares de Junín 374, Piso 6, Jesús María</div>
+          </div>
+        </div>
+        <div class="detalles-row">
+          <div class="di">💰</div>
+          <div>
+            <div class="label">Costo para la marca</div>
+            <div class="val hl">100% gratuito</div>
+          </div>
+        </div>
+        <div class="detalles-row">
+          <div class="di">🎟️</div>
+          <div>
+            <div class="label">Cupos disponibles</div>
+            <div class="val">8 marcas aliadas (cupos limitados)</div>
+          </div>
+        </div>
+        <div class="detalles-row">
+          <div class="di">⏰</div>
+          <div>
+            <div class="label">Fecha límite para confirmar</div>
+            <div class="val hl">Miércoles 21 de mayo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detalles-foto">
+        <div class="df">
+          <img src="ma-cartwheel-colchon.png" alt="Acroflex acción" />
+        </div>
+        <div class="df">
+          <img src="ma-handstand-coach.png" alt="Acroflex acción" />
+        </div>
+        <div class="alerta">
+          <div class="ai">🔥</div>
+          <p>Solo <strong>8 cupos</strong> disponibles. Confirmamos por orden de llegada. <strong>Cierre: 21 de mayo.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+<div class="cta-final">
+  <div class="cta-bg">
+    <img src="ma-grupo-handstands.png" alt="Acroflex Experience" style="object-position: top" />
+    <div class="cta-content">
+      <h2>¿Tu marca quiere<br/>estar aquí?</h2>
+      <p>Escríbele a Nicole y te contamos cómo integrarte. Sin compromisos, sin letra chica.</p>
+      <a href="https://wa.me/51923235248?text=Hola%20Nicole!%20Quiero%20m%C3%A1s%20info%20para%20ser%20marca%20aliada%20del%20Acroflex%20Experience%20%F0%9F%A7%A1"
+         target="_blank" class="btn-cta">
+        Escribirle a Nicole por WhatsApp
+      </a>
+      <p class="cta-nota">📲 +51 923 235 248 · Respondemos rápido</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer>
+  <strong>Acroflex Training Center</strong> · Av. Húsares de Junín 374, Piso 6, Jesús María, Lima<br/>
+  WhatsApp: 993 813 336 | 969 622 550
+</footer>
+
+</body>
+</html>

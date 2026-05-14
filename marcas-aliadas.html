@@ -495,6 +495,39 @@
       .btn-cta { display: block; width: 100%; max-width: 320px; text-align: center; }
     }
 
+    /* ── ANIMACIONES ────────────────────────────────────── */
+    @keyframes heroUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes heroRight {
+      from { opacity: 0; transform: translateX(22px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .hero-text .logo      { animation: heroUp    0.6s 0.10s ease both; }
+    .hero-text .badge     { animation: heroUp    0.6s 0.25s ease both; }
+    .hero-text h1         { animation: heroUp    0.65s 0.40s ease both; }
+    .hero-text p          { animation: heroUp    0.6s 0.55s ease both; }
+    .hero-text .btn-hero  { animation: heroUp    0.6s 0.70s ease both; }
+    .hero-text .hero-datos{ animation: heroUp    0.6s 0.85s ease both; }
+    .hero-fotos .hf:first-child { animation: heroRight 0.7s 0.40s ease both; }
+    .hero-fotos .hf:last-child  { animation: heroRight 0.7s 0.60s ease both; }
+
+    [data-anim] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    [data-anim="from-left"]  { transform: translateX(-28px); }
+    [data-anim="from-right"] { transform: translateX(28px); }
+    [data-anim="scale"]      { transform: scale(0.94) translateY(16px); }
+    [data-anim].in-view { opacity: 1 !important; transform: none !important; }
+    [data-delay="1"] { transition-delay: 0.08s; }
+    [data-delay="2"] { transition-delay: 0.16s; }
+    [data-delay="3"] { transition-delay: 0.24s; }
+    [data-delay="4"] { transition-delay: 0.32s; }
+    [data-delay="5"] { transition-delay: 0.40s; }
+
     /* ── FOOTER ──────────────────────────────────────────── */
     footer {
       background: var(--azul);
@@ -540,19 +573,19 @@
 
 <!-- ══ PHOTO STRIP ════════════════════════════════════════ -->
 <div class="photo-strip">
-  <div class="ps"><img src="ma-grupo-estiramiento.png" alt="" style="object-position: center" /></div>
-  <div class="ps"><img src="ma-cartwheel-rosa.png" alt="" style="object-position: center" /></div>
-  <div class="ps"><img src="ma-grupo-handstands.png" alt="" style="object-position: top" /></div>
-  <div class="ps"><img src="ma-grupo-puente.png" alt="" style="object-position: center" /></div>
+  <div class="ps" data-anim data-delay="1"><img src="ma-grupo-estiramiento.png" alt="" style="object-position: center" /></div>
+  <div class="ps" data-anim data-delay="2"><img src="ma-cartwheel-rosa.png" alt="" style="object-position: center" /></div>
+  <div class="ps" data-anim data-delay="3"><img src="ma-grupo-handstands.png" alt="" style="object-position: top" /></div>
+  <div class="ps" data-anim data-delay="4"><img src="ma-grupo-puente.png" alt="" style="object-position: center" /></div>
 </div>
 
 <!-- ══ QUÉ ES EL EVENTO ═══════════════════════════════════ -->
 <section>
   <div class="container">
-    <div class="section-label">El evento</div>
-    <h2 class="title">¿Qué es el<br/><span>Acroflex Experience?</span></h2>
+    <div class="section-label" data-anim>El evento</div>
+    <h2 class="title" data-anim data-delay="1">¿Qué es el<br/><span>Acroflex Experience?</span></h2>
     <div class="evento-split">
-      <div class="evento-texto">
+      <div class="evento-texto" data-anim="from-left">
         <p class="subtitle">
           Es nuestro primer evento especial en el nuevo salón de Acroflex: una noche de acrobacias, estiramiento guiado, buena música, comunidad y sorpresas.
         </p>
@@ -566,7 +599,7 @@
           <div class="evento-chip">📸 Fotos y videos de la noche</div>
         </div>
       </div>
-      <div class="evento-foto">
+      <div class="evento-foto" data-anim="from-right">
         <img src="ma-handstand-doble.png" alt="Clase Acroflex" />
       </div>
     </div>
@@ -576,36 +609,36 @@
 <!-- ══ AUDIENCIA ══════════════════════════════════════════ -->
 <section class="audiencia">
   <div class="container">
-    <div class="section-label">Tu audiencia ese día</div>
-    <h2 class="title">Personas que<br/><span>se mueven y consumen</span></h2>
-    <p class="subtitle">Asistentes comprometidos con el deporte, el bienestar y el movimiento. Exactamente el perfil que busca tu marca.</p>
+    <div class="section-label" data-anim>Tu audiencia ese día</div>
+    <h2 class="title" data-anim data-delay="1">Personas que<br/><span>se mueven y consumen</span></h2>
+    <p class="subtitle" data-anim data-delay="2">Asistentes comprometidos con el deporte, el bienestar y el movimiento. Exactamente el perfil que busca tu marca.</p>
 
     <div class="stats-grid">
-      <div class="stat-card">
+      <div class="stat-card" data-anim data-delay="1">
         <div class="num">~30<em>+</em></div>
         <p>Asistentes al evento</p>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" data-anim data-delay="2">
         <div class="num">2.5<em>h</em></div>
         <p>Horas de interacción</p>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" data-anim data-delay="3">
         <div class="num">8</div>
         <p>Cupos para marcas</p>
       </div>
-      <div class="stat-card">
+      <div class="stat-card" data-anim data-delay="4">
         <div class="num">S/<em style="font-size:1.4rem">0</em></div>
         <p>Costo de participación</p>
       </div>
     </div>
 
     <div class="foto-row">
-      <div class="fr"><img src="ma-chica-posando.png" alt="Acroflex adultos" /></div>
-      <div class="fr"><img src="ma-chico-posando.png" alt="Acroflex grupo" /></div>
-      <div class="fr"><img src="ma-grupo-estiramiento.png" alt="Acroflex movimiento" /></div>
+      <div class="fr" data-anim data-delay="1"><img src="ma-chica-posando.png" alt="Acroflex adultos" /></div>
+      <div class="fr" data-anim data-delay="2"><img src="ma-chico-posando.png" alt="Acroflex grupo" /></div>
+      <div class="fr" data-anim data-delay="3"><img src="ma-grupo-estiramiento.png" alt="Acroflex movimiento" /></div>
     </div>
 
-    <div class="tags">
+    <div class="tags" data-anim>
       <span class="tag">🏃 Deporte y movimiento</span>
       <span class="tag">🥗 Salud y bienestar</span>
       <span class="tag">💪 Vida activa</span>
@@ -618,10 +651,10 @@
 <!-- ══ CÓMO PARTICIPAS ════════════════════════════════════ -->
 <section>
   <div class="container">
-    <div class="section-label">Formas de participar</div>
-    <h2 class="title">Tú decides<br/><span>cómo conectar</span></h2>
+    <div class="section-label" data-anim>Formas de participar</div>
+    <h2 class="title" data-anim data-delay="1">Tú decides<br/><span>cómo conectar</span></h2>
 
-    <div class="part-banner">
+    <div class="part-banner" data-anim="scale">
       <img src="ma-cartwheel-rosa.png" alt="Acroflex entreno" />
       <div class="part-banner-text">
         <h3>Sin complicaciones.<br/><span>Sin letra chica.</span></h3>
@@ -630,27 +663,27 @@
     </div>
 
     <div class="participacion-grid">
-      <div class="part-card">
+      <div class="part-card" data-anim data-delay="1">
         <div class="icon">🎁</div>
         <h3>Sorteo o regalo sorpresa</h3>
         <p>Dona un producto o pack y hazlo parte del momento de sorteos. Máxima visibilidad y emoción.</p>
       </div>
-      <div class="part-card">
+      <div class="part-card" data-anim data-delay="2">
         <div class="icon">🧪</div>
         <h3>Muestra o degustación</h3>
         <p>Lleva muestras para que los asistentes prueben en vivo. Nada convence más que la experiencia directa.</p>
       </div>
-      <div class="part-card">
+      <div class="part-card" data-anim data-delay="3">
         <div class="icon">⚡</div>
         <h3>Activación de marca</h3>
         <p>Crea una dinámica corta y divertida que haga sentir tu marca. Un reto, una foto, una experiencia.</p>
       </div>
-      <div class="part-card">
+      <div class="part-card" data-anim data-delay="4">
         <div class="icon">🏷️</div>
         <h3>Descuento exclusivo</h3>
         <p>Ofrece un beneficio especial solo para asistentes del evento. Genera ventas y fidelización reales.</p>
       </div>
-      <div class="part-card">
+      <div class="part-card" data-anim data-delay="5">
         <div class="icon">💡</div>
         <h3>¿Tienes otra idea?</h3>
         <p>Si tienes una propuesta distinta, conversamos. Queremos que tenga sentido para tu marca.</p>
@@ -665,33 +698,33 @@
     <div class="ganas-split">
 
       <div>
-        <div class="section-label" style="color:rgba(255,153,51,0.9)">Lo que obtienes</div>
-        <h2 class="title">Exposición real,<br/>no solo presencia</h2>
-        <p class="subtitle">Ser parte del Acroflex Experience significa que tu marca aparece donde está la comunidad.</p>
+        <div class="section-label" data-anim style="color:rgba(255,153,51,0.9)">Lo que obtienes</div>
+        <h2 class="title" data-anim data-delay="1">Exposición real,<br/>no solo presencia</h2>
+        <p class="subtitle" data-anim data-delay="2">Ser parte del Acroflex Experience significa que tu marca aparece donde está la comunidad.</p>
 
         <div class="ganas-items">
-          <div class="gana-item">
+          <div class="gana-item" data-anim data-delay="1">
             <div class="icon">📱</div>
             <div>
               <h3>Mención en redes sociales</h3>
               <p>Tu marca aparece en la comunicación oficial del evento en Instagram de Acroflex.</p>
             </div>
           </div>
-          <div class="gana-item">
+          <div class="gana-item" data-anim data-delay="2">
             <div class="icon">🎬</div>
             <div>
               <h3>Presencia en el contenido del evento</h3>
               <p>Fotos y videos del evento incluirán tu marca en acción dentro del espacio.</p>
             </div>
           </div>
-          <div class="gana-item">
+          <div class="gana-item" data-anim data-delay="3">
             <div class="icon">🤝</div>
             <div>
               <h3>Contacto directo con tu público</h3>
               <p>2.5 horas cara a cara con personas que eligieron invertir en su bienestar.</p>
             </div>
           </div>
-          <div class="gana-item">
+          <div class="gana-item" data-anim data-delay="4">
             <div class="icon">🌱</div>
             <div>
               <h3>Prioridad en próximos eventos</h3>
@@ -701,7 +734,7 @@
         </div>
       </div>
 
-      <div class="ganas-foto-col">
+      <div class="ganas-foto-col" data-anim="from-right">
         <div class="gf">
           <img src="ma-handstand-solo.png" alt="Acroflex comunidad" style="object-position: top" />
         </div>
@@ -717,11 +750,11 @@
 <!-- ══ DETALLES ═══════════════════════════════════════════ -->
 <section class="detalles">
   <div class="container">
-    <div class="section-label">Todo lo que necesitas saber</div>
-    <h2 class="title">Detalles del<br/><span>acuerdo</span></h2>
+    <div class="section-label" data-anim>Todo lo que necesitas saber</div>
+    <h2 class="title" data-anim data-delay="1">Detalles del<br/><span>acuerdo</span></h2>
 
     <div class="detalles-inner">
-      <div class="detalles-box">
+      <div class="detalles-box" data-anim="from-left">
         <div class="detalles-row">
           <div class="di">📅</div>
           <div>
@@ -766,7 +799,7 @@
         </div>
       </div>
 
-      <div class="detalles-foto">
+      <div class="detalles-foto" data-anim="from-right">
         <div class="df">
           <img src="ma-cartwheel-colchon.png" alt="Acroflex acción" />
         </div>
@@ -787,10 +820,10 @@
   <div class="cta-bg">
     <img src="ma-grupo-handstands.png" alt="Acroflex Experience" style="object-position: top" />
     <div class="cta-content">
-      <h2>¿Tu marca quiere<br/>estar aquí?</h2>
-      <p>Escríbele a Nicole y te contamos cómo integrarte. Sin compromisos, sin letra chica.</p>
+      <h2 data-anim>¿Tu marca quiere<br/>estar aquí?</h2>
+      <p data-anim data-delay="1">Escríbele a Nicole y te contamos cómo integrarte. Sin compromisos, sin letra chica.</p>
       <a href="https://wa.me/51923235248?text=Hola%20Nicole!%20Quiero%20m%C3%A1s%20info%20para%20ser%20marca%20aliada%20del%20Acroflex%20Experience%20%F0%9F%A7%A1"
-         target="_blank" class="btn-cta">
+         target="_blank" class="btn-cta" data-anim data-delay="2">
         Escribirle a Nicole por WhatsApp
       </a>
       <p class="cta-nota">📲 +51 923 235 248 · Respondemos rápido</p>
@@ -804,5 +837,17 @@
   WhatsApp: 993 813 336 | 969 622 550
 </footer>
 
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
